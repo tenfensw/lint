@@ -71,6 +71,8 @@ if ARGV.length < 1 || ARGV.include?('--help') then
 	exit 1
 end
 
+fail = false
+
 ARGV.each do |file|
 	if not File.exists? file then
 		puts "Error. #{file} - no such file or directory."
@@ -85,6 +87,7 @@ ARGV.each do |file|
 		array_of_brackets = brackets_detect(line, brackets)
 		puts "#{array_of_brackets}"
 		if array_of_brackets.has_value?('end', [-1, 0]) then
+			fail = true
 			puts "Mismatching bracket pairs were found on line #{linev} in file \"#{file}\":"
 			puts "   Pairs detected: #{array_of_brackets.length}"
 			puts "   Details:"
@@ -102,3 +105,8 @@ ARGV.each do |file|
 		end
 	end
 end
+
+if fail then
+	exit 1
+end
+exit 0

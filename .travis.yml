@@ -1,0 +1,4 @@
+language: ruby
+rvm: 2.3.6
+
+script: ruby tests/run.rb

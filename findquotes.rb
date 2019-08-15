@@ -3,6 +3,8 @@ if ARGV.length < 1 || ARGV.include?('--help') then
 	puts "Usage: ruby #{$0} <source file>"
 end
 
+fail = false
+
 ARGV.each do |item|
 	if not File.exists? item then
 		puts "Error. #{item} does not exist."
@@ -46,6 +48,7 @@ ARGV.each do |item|
 			end
 		end
 		if (quotes_count % 2) != 0 then
+			fail = true
 			awaited = quotes_pairs.length * 2
 			puts "Quotes mismatches were found on line #{index_line} in file \"#{item}\":"
 			puts "   Awaited quotes count: #{awaited}"
@@ -67,3 +70,8 @@ ARGV.each do |item|
 		end
 	end
 end
+
+if fail then
+	exit 1
+end
+exit 0
