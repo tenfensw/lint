@@ -1,1 +1,2 @@
+image:https://travis-ci.org/timkoi/lint.svg?branch=master["Build Status", link="https://travis-ci.org/timkoi/lint"]
 This repo contains various lint scripts that I made and still use in my own projects. They were written because of RuboCop's weird errors in pretty standard cases, such as missing quotes.
