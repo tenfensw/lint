@@ -2,6 +2,20 @@
 
 brackets = { '(' => ')', '[' => ']', '{' => '}' }
 
+if RUBY_VERSION.split('.')[1].to_s.to_i < 4 then
+	class Fixnum
+		def clone
+			return self
+		end
+	end
+	
+	class Bignum
+		def clone
+			return self
+		end
+	end
+end
+
 class String
 	def find_from_back(charc)
 		index = self.length

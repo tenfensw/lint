@@ -1,4 +1,19 @@
 #!/usr/bin/env ruby
+if RUBY_VERSION.split('.')[1].to_s.to_i < 4 then
+	class Fixnum
+		def clone
+			return self
+		end
+	end
+	
+	class Bignum
+		def clone
+			return self
+		end
+	end
+end
+
+
 if ARGV.length < 1 || ARGV.include?('--help') then
 	puts "Usage: ruby #{$0} <source file>"
 end
