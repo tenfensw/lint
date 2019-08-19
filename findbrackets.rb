@@ -99,7 +99,6 @@ ARGV.each do |file|
 	File.read(file).gsub("\r\n", "\n").split("\n").each do |line|
 		linev += 1
 		array_of_brackets = brackets_detect(line, brackets)
-		puts "#{array_of_brackets}"
 		if array_of_brackets.has_value?('end', [-1, 0]) then
 			fail = true
 			puts "Mismatching bracket pairs were found on line #{linev} in file \"#{file}\":"
